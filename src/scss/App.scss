@@ -1,0 +1,33 @@
+$color1: rgba(69, 24, 107, 1);
+$color2: rgba(255, 161, 127, 1);
+$color3: rgba(214, 239, 255, 1);
+$color4: rgba(40, 34, 45, 1);
+$color5: rgba(255, 255, 250, 1);
+
+#app {
+  .flex-row-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .firstColor {
+    background-color: $color1;
+  }
+
+  .secondColor {
+    background-color: $color2;
+  }
+
+  .thirdColor {
+    background-color: $color3;
+  }
+
+  .fourthColor {
+    background-color: $color4;
+  }
+
+  .fifthColor {
+    background-color: $color5;
+  }
+}
