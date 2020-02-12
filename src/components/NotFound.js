@@ -3,9 +3,15 @@ import error from "../images/error.png";
 
 function NotFound() {
   return (
-    <div id="notFound">
-      <p>You were not found!</p>
-      <img src={error} alt="Not Found!"></img>
+    <div id="error" className="page thirdColor ">
+      <section className="flex-row-center">
+        <div className="left fifty">
+          <h1>Looks like you are lost!</h1>
+        </div>
+        <div className="right fifty">
+          <img src={error} alt="error" />
+        </div>
+      </section>
     </div>
   );
 }

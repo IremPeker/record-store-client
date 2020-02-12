@@ -7,8 +7,8 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: "babylonq@dci.edu",
+      password: "1234567890"
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -33,37 +33,41 @@ class Login extends React.Component {
   }
 
   render() {
-    const status = this.props.isLoggedIn;
+    const isLoggedIn = this.props.isLoggedIn;
 
     return (
       <>
-        {!status ? (
+        {isLoggedIn ? (
+          <Redirect to="/dashboard" />
+        ) : (
           <div id="login" className="page thirdColor">
             <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>
-              <label className="flex-col-left">
-                Email:
+              <div className="row flex-revcol-left">
                 <input
                   name="email"
                   type="text"
                   value={this.state.email}
                   onChange={this.handleInputChange}
+                  id="email"
+                  required
                 />
-              </label>
-              <label className="flex-col-left">
-                Password:
+                <label htmlFor="email">Email</label>
+              </div>
+              <div className="row flex-revcol-left">
                 <input
                   name="password"
                   type="text"
                   value={this.state.password}
                   onChange={this.handleInputChange}
+                  id="password"
+                  required
                 />
-              </label>
+                <label htmlFor="password">Password</label>
+              </div>
               <input type="submit" value="Submit" />
             </form>
           </div>
-        ) : (
-          <Redirect to="/dashboard" />
         )}
       </>
     );

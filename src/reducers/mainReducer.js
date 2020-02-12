@@ -1,13 +1,37 @@
 const initialState = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  info: {},
+  records: [],
+  loading: true
 };
 
-// action is coming from actions folder
 const mainReducer = (state = initialState, action) => {
   if (action.type === "HANDLE_LOGIN") {
-    // WE MAKE AN API CALL
+    if (action.payload.hasOwnProperty("error")) {
+      state.isLoggedIn = false;
+    } else {
+      state.isLoggedIn = true;
+      state.info = action.payload;
+    }
+
+    state.loading = false;
+
+    return Object.assign({}, state);
   }
-  return false;
+
+  if (action.type === "HANDLE_LOGOUT") {
+    state.isLoggedIn = false;
+    return Object.assign({}, state);
+  }
+
+  if (action.type === "FETCH_RECORDS") {
+    state.isLoggedIn = true;
+    state.records = [...state.records, ...action.payload];
+
+    return Object.assign({}, state);
+  }
+
+  return state;
 };
 
 export default mainReducer;
